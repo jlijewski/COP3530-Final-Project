@@ -29,7 +29,8 @@ int main() {
     getline(ratingData, line2);
     
     set<string> generes;
-    int counter;
+    int counter = 0;
+    int nCounter = 0;
     
     while(!movieData.eof())
     {
@@ -84,13 +85,15 @@ int main() {
             generes.insert(genere);
             
         }
+        
     
     }
     for(auto it : generes)
     {
         cout<< it <<endl;
     }
-    cout<<counter++<<endl;
+    cout<<counter<<endl;
+    
     
     
 
