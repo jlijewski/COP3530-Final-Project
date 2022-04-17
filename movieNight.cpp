@@ -29,9 +29,9 @@ int main() {
     string line2;
     getline(ratingData, line2);
     
-    set<string> generes;
+    
     int counter = 0;
-    int nCounter = 0;
+    
     
     while(!movieData.eof()){
 
@@ -91,8 +91,8 @@ int main() {
         else
         {
             counter++;
-            
-            movieList.insertMovie()
+            double compareRating = rating * (double) votes;
+            movieList.insertMovie(moviePrimaryTitle, movieStartYear, movieGenre, compareRating, rating, votes, movieRunTime)
             
         }
         
