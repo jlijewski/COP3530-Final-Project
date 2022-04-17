@@ -98,9 +98,23 @@ int main() {
         
         
     }
+    cout<< "Choose option";
+    cout<< "For search movie enter option 1";
+    cout<< "option 2";
+   int option;
+    cin>> option;
+    bool end =false
+    while(option != 2 || option != 1){
+    cout<<"wront option, enter either 1 or 2 ";
+    cin >>option
+    }
+    while(!end){
     cout<< counter<< endl;
-
-    
+cout<< "Enter name to search title";
+string nameOfMovie;
+cin>> nameOfMovie;
+movieList.search(nameOfMovie);
+}
 
 
     
