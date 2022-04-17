@@ -14,24 +14,56 @@
 
 using namespace std;
 
-class maxHeap
-{
-    struct Movie
-    {
-        string title;
-        string year;
-        string genre;
-        double rating;
-        double tenRating;
+struct Movie{
+       string primaryTitle
+                   string originalTitle;
+                   string isAdult;
+                   string startYear;
+                   string endYear;
+                    string movieNum;
+                     string movieType;
+                    string runTime;
+                     string year ;
+                      string genre;
+                      string votes;
+                       string rating;
+                      string numberOfRating;
+                      string movieVotes;
 
-        Movie(string _title, string _year, string _genre, double _rating, double _tenRating)
+        Movie(string _primaryTitle, string _originalTitle, string _isAdult, string _startYear, int _endYear, int _movieNum, string _movieType, double runTime, int _year ,string _genre, int _votes, double _rating, double string _numberofrating, int _movieVotes)
         {
-            title = _title;
-            year = _year;
-            genre = _genre;
-            rating = _rating;
-            tenRating = _tenRating;
+           primaryTitle= _primaryTitle;
+             originalTitle = _originalTitle;
+             isAdult= _isAdult;
+            startYear= _startYear;
+            endYear= _endYear;
+             movieNum= _movieNum;
+              movieType= _movieType;
+               runTime= _runTime;
+              year= _year ;
+               genre= _genre;
+               votes= _votes;
+                rating= _rating;
+                numberOfRating = _numberOfRating;
+                movieVotes = _movieVotes;
         }
     };
-    
+
+class maxHeap{
+
+
+    private:
+   public:
+
+
+    Movie* insertMovie(string title, string year, string genre, double rating, double tenRating){// Rudolph will write
+
+
+    }
+
+    void heapsort(){
+
+
+    }
+
 };

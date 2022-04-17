@@ -11,12 +11,13 @@
 #include <assert.h>
 #include <bits/stdc++.h>
 #include <math.h>
-
+#include "maxHeap.h"
 using namespace std;
 
 
 
 int main() {
+maxHeap movieList;
     
     ifstream movieData("movieData.tsv");
     ifstream ratingData("movieRatings.tsv");
@@ -32,8 +33,7 @@ int main() {
     int counter = 0;
     int nCounter = 0;
     
-    while(!movieData.eof())
-    {
+    while(!movieData.eof()){
 
     
         string movieNumber;
@@ -45,8 +45,8 @@ int main() {
         string moviePrimaryTitle;
         getline(movieData, moviePrimaryTitle, '\t');
     
-        string movieOriginalTital;
-        getline(movieData, movieOriginalTital, '\t');
+        string movieOriginalTitle;
+        getline(movieData, movieOriginalTitle, '\t');
     
         string movieIsAdult;
         getline(movieData, movieIsAdult, '\t');
@@ -60,8 +60,8 @@ int main() {
         string movieRunTime;
         getline(movieData, movieRunTime, '\t');
     
-        string movieGenere;
-        getline(movieData, movieGenere, '\n');
+        string movieGenre;
+        getline(movieData, movieGenre, '\n');
     
         string movieRatingNum;
         getline(ratingData, movieRatingNum, '\t');
@@ -86,16 +86,13 @@ int main() {
             
         }
         
-    
+    movieList.insertMovie()
     }
-    for(auto it : generes)
-    {
+    for(auto it : generes){
         cout<< it <<endl;
     }
+
     cout<<counter<<endl;
-    
-    
-    
 
 
     
