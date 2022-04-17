@@ -17,7 +17,7 @@ using namespace std;
 
 
 int main() {
-maxHeap movieList;
+    maxHeap movieList;
     
     ifstream movieData("movieData.tsv");
     ifstream ratingData("movieRatings.tsv");
@@ -71,28 +71,36 @@ maxHeap movieList;
     
         string movieVotes;
         getline(ratingData, movieVotes, '\n');
+        double rating = 0;
+        int votes;
+        try
+        {
+            rating = stod(movieRating);
+            votes = stoi(movieVotes);
+        }
+        catch(const std::exception& e)
+        {
+            continue;
+        }
         
-        if(movieType != "movie")
+        
+        if(movieType != "movie" || rating < 6.0 || votes < 1000)
         {
             continue;
         }
         else
         {
             counter++;
-            stringstream s(movieGenere);
-            string genere;
-            getline(s, genere, ',');
-            generes.insert(genere);
+            
+            movieList.insertMovie()
             
         }
         
-    movieList.insertMovie()
+        
     }
-    for(auto it : generes){
-        cout<< it <<endl;
-    }
+    cout<< counter<< endl;
 
-    cout<<counter<<endl;
+    
 
 
     
