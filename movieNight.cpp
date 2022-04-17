@@ -84,7 +84,7 @@ int main() {
         }
         
         
-        if(movieType != "movie" || rating < 6.0 || votes < 1000)
+        if(movieType != "movie"|| votes < 50)
         {
             continue;
         }
