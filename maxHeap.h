@@ -43,7 +43,7 @@ class maxHeap{
    public:
 
 
-    Movie* insertMovie(string title, string year, string genre, double rating, double tenRating, int movieVotes, string genre){// Rudolph will write
+    Movie* insertMovie(string title, string year, string genre, double rating, double tenRating, int movieVotes, string runTime){// Rudolph will write
 
 
     }
