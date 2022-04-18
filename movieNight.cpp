@@ -12,12 +12,14 @@
 #include <bits/stdc++.h>
 #include <math.h>
 #include "maxHeap.h"
+
 using namespace std;
 
 
 
 int main() {
     maxHeap movieList;
+    
     
     ifstream movieData("movieData.tsv");
     ifstream ratingData("movieRatings.tsv");
@@ -92,13 +94,15 @@ int main() {
         {
             counter++;
             double compareRating = rating * (double) votes;
-            movieList.insertMovie(moviePrimaryTitle, movieStartYear, movieGenre, compareRating, rating, votes, movieRunTime)
+            movieList.insertMovie(moviePrimaryTitle, movieStartYear, movieGenre, compareRating, rating, votes, movieRunTime);
             
         }
         
         
     }
-    cout<< "Choose option";
+    movieList.getMax();
+    
+    /*cout<< "Choose option";
     cout<< "For search movie enter option 1";
     cout<< "option 2";
    int option;
@@ -110,11 +114,11 @@ int main() {
     }
     while(!end){
     cout<< counter<< endl;
-cout<< "Enter name to search title";
-string nameOfMovie;
-cin>> nameOfMovie;
-movieList.search(nameOfMovie);
-}
+    cout<< "Enter name to search title";
+    string nameOfMovie;
+    cin>> nameOfMovie;
+    movieList.search(nameOfMovie);*/
+
 
 
     
