@@ -31,7 +31,23 @@ int main() {
     string line2;
     getline(ratingData, line2);
     
+    map<string, vector<string>> ratingMap;
+    while(!ratingData.eof())
+    {
+        string movieRatingNum;
+        getline(ratingData, movieRatingNum, '\t');
     
+        string movieRating;
+        getline(ratingData, movieRating, '\t');
+    
+        string movieVotes;
+        getline(ratingData, movieVotes, '\n');
+
+        vector<string> ratingVector;
+        ratingVector.push_back(movieRating);
+        ratingVector.push_back(movieVotes);
+        ratingMap[movieRatingNum] = ratingVector;
+    }
     int counter = 0;
     
     
@@ -65,37 +81,46 @@ int main() {
         string movieGenre;
         getline(movieData, movieGenre, '\n');
     
-        string movieRatingNum;
-        getline(ratingData, movieRatingNum, '\t');
-    
-        string movieRating;
-        getline(ratingData, movieRating, '\t');
-    
-        string movieVotes;
-        getline(ratingData, movieVotes, '\n');
-        double rating = 0;
-        int votes;
-        try
-        {
-            rating = stod(movieRating);
-            votes = stoi(movieVotes);
-        }
-        catch(const std::exception& e)
-        {
-            continue;
-        }
         
         
-        if(movieType != "movie"|| votes < 50)
+        
+        
+        if(movieType != "movie")
         {
             continue;
         }
         else
         {
-            counter++;
-            double compareRating = rating * (double) votes;
-            movieList.insertMovie(moviePrimaryTitle, movieStartYear, movieGenre, compareRating, rating, votes, movieRunTime);
+            if(ratingMap.find(movieNumber) == ratingMap.end())
+            {
+                continue;
+            }
+            else
+            {
+
             
+                double rating = 0;
+                int votes;
+                try
+                {
+                    rating = stod(ratingMap[movieNumber].at(0));
+                    votes = stoi(ratingMap[movieNumber].at(1));
+                }
+                catch(const std::exception& e)
+                {
+                    continue;
+                }
+                if( votes < 50)
+                {
+                    continue;
+                }
+                else
+                {
+                    counter++;
+                    double compareRating = rating * (double) votes;
+                    movieList.insertMovie(moviePrimaryTitle, movieStartYear, movieGenre, compareRating, rating, votes, movieRunTime);
+                }
+            }
         }
         
         
