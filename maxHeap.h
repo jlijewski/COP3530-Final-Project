@@ -12,9 +12,15 @@
 #include <bits/stdc++.h>
 #include <math.h>
 
+
 using namespace std;
 
-struct Movie{
+
+
+class maxHeap{
+
+    struct Movie
+    {
         string title;
         string year;
         string runTime;
@@ -35,43 +41,19 @@ struct Movie{
         }
     };
 
-class maxHeap{
 
-
-    private:
+    
     vector<Movie> heap;
    public:
 
-
-    void insertMovie(string title, string year, string genre, double rating, double tenRating, int movieVotes, string runTime){// Rudolph will write
-maxHeap * newNode = new Movie( title, year, genre, rating,tenRating, movieVotes, runTime);
-
-vector.push_back(newNode);
-    }
-
-   /*Movie* search(string movieName){
-   int n =  heap.size();
-   vector<int>::iterator it;
-    for (it = heap.begin(); t != heap.end();it++){
-if (heap->title = movieName){
-cout<< heap->title;
-       cout<< heap-> year;
-      cout<< heap-> runTime;
-       cout<< heap-> genre;
-       cout<< heap->  rating;
-        cout <<heap->tenRating;
-       cout <<heap-> movieVotes;
-}*
-    }
-else{
-cout<< "not found";
-
-}
-    }*/
-
-    void heapsort(){
+    void insertMovie(string title, string year, string genre, double rating, double tenRating, int movieVotes, string runTime);
+    void heapifyUp(int index);
+    void heapifyDown(int index);
+    void getMax();
+    void deleteMax();
+    
 
 
-    }
+    
 
 };
