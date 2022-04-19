@@ -349,16 +349,23 @@ vector<string>  manageList( vector<string> personalList){
     bool continueBool = true;
     int option;
     string title;
+    int swapper, swapped;
     while(continueBool){
         for(int i = 0; i < personalList.size(); i++)
         {
-            cout<<personalList.at(i)<<endl;
+            cout<< i+1 << ". " << personalList.at(i)<<endl;
         }
-        cout<<"TYPE 1 TO DELETE A MOVIE, OR 2 TO EXIT" << endl;
+        cout<<"TYPE 1 TO SWAP MOVIE PLACING, 2 TO DELETE A MOVIE, OR 3 TO EXIT" << endl;
         cin >> option;
         if(option == 1){
+            cout << "MOVIE TO BE SWAPPED, BY NUMBER:" << endl;
+            cin >> swapper;
+            cout <<"WITH MOVIE:" << endl;
+            cin >> swapped;
+            swap(personalList[swapper - 1], personalList[swapped - 1]);
+        }
+        else if(option == 2){
             cout << "MOVIE TO BE DELETED:" << endl;
-            //cin.sync();
             cin.get();
             getline(cin, title);
             personalList = deleteMovie(personalList, title);
