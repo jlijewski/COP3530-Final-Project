@@ -74,9 +74,14 @@ void maxHeap::heapifyDown(int index)
     }
 
 }
-void maxHeap::getMax()
+vector<string> maxHeap::getMax()
 {
-    cout<< heap.at(0).title << " "<< heap.at(0).tenRating << " "<< heap.at(0).movieVotes<< endl;
+    vector<string> maxToReturn;
+    maxToReturn.push_back(heap.at(counter).title);
+    maxToReturn.push_back(to_string(heap.at(counter).tenRating));
+    maxToReturn.push_back(heap.at(counter).genre);
+    counter++;
+    return maxToReturn;
     
 }
 void maxHeap::deleteMax()
