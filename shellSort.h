@@ -36,8 +36,9 @@ class shellSort{
             }
     };
     vector<Movie> shell;
+    int counter = 0;
 public:
     void insertMovie(string title, string year, string genre, double rating, double tenRating, int movieVotes, string runTime);
-    void getMax();
+    vector<string> getMax();
     void sort();
 };
