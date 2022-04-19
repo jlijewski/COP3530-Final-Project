@@ -4,7 +4,7 @@ void shellSort::insertMovie(string title, string year, string genre, double rati
                             string runTime) {
     Movie testMovie = Movie(title, runTime, year, genre, rating, tenRating, movieVotes);
     shell.push_back(testMovie);
-    sort();
+    
 }
 void shellSort::sort(){
     int gap = (int) shell.size()/2;
@@ -19,10 +19,16 @@ void shellSort::sort(){
         }
         gap /= 2;
     }
-    cout << shell[0].title << " " << shell[0].rating << endl;
+    //cout << shell[0].title << " " << shell[0].rating << endl;
 }
 
-void shellSort::getMax() {
-    cout<< shell[0].title << " "<< shell[0].tenRating << " "<< shell[0].movieVotes<< endl;
+vector<string> shellSort::getMax() {
+    sort();
+    vector<string> maxToReturn;
+    maxToReturn.push_back(shell.at(counter).title);
+    maxToReturn.push_back(to_string(shell.at(counter).tenRating));
+    maxToReturn.push_back(shell.at(counter).genre);
+    counter++;
+    return maxToReturn;
 }
 
