@@ -12,13 +12,28 @@
 #include <bits/stdc++.h>
 #include <math.h>
 #include "maxHeap.h"
+#include "shellSort.h"
+#include <chrono>
+
+
 
 using namespace std;
+using namespace std::chrono;
 
 
 
 int main() {
+
+    cout<<"WELCOME TO MOVIE-NIGHT:TYPE ANYTHING TO BEGIN"<<endl;
+    string start;
+    cin>>start;
+    
+    
+    cout<<"LOADING MOVIE INFORMATION..."<<endl;
+    
+    vector<string> personalList;
     maxHeap movieList;
+    shellSort shellList;
     
     
     ifstream movieData("movieData.tsv");
@@ -50,7 +65,9 @@ int main() {
     }
     int counter = 0;
     
-    
+    int64_t heapTimeTaken;
+    int64_t shellTimeTaken;
+    chrono::duration<double> heapTime;
     while(!movieData.eof()){
 
     
@@ -118,31 +135,96 @@ int main() {
                 {
                     counter++;
                     double compareRating = rating * (double) votes;
+
+                    auto heapStart = chrono::system_clock::now();
                     movieList.insertMovie(moviePrimaryTitle, movieStartYear, movieGenre, compareRating, rating, votes, movieRunTime);
+                    auto heapStop = chrono::system_clock::now();
+                    heapTime = (heapStop - heapStart);
+                    //heapTimeTaken += heapTime.count();
+
+                    
+                    shellList.insertMovie(moviePrimaryTitle, movieStartYear,movieGenre, compareRating, rating, votes, movieRunTime);
+                    
                 }
             }
         }
         
         
     }
-    movieList.getMax();
-    
-    /*cout<< "Choose option";
-    cout<< "For search movie enter option 1";
-    cout<< "option 2";
-   int option;
-    cin>> option;
-    bool end =false
-    while(option != 2 || option != 1){
-    cout<<"wront option, enter either 1 or 2 ";
-    cin >>option
+    vector<string> heapTop;
+    vector<string> shellTop;
+
+    cout<<"------FIRST MOVIE------"<<endl;
+    cout<<endl;
+    cout<<"MOVIE FROM HEAP-SORT:"<<endl;
+    heapTop = movieList.getMax();
+    cout<<heapTop.at(0)<<" "<<heapTop.at(1)<< " "<< heapTop.at(2)<<endl;
+    cout<<"TIME TAKEN FOR HEAP-SORT: "<< heapTime.count() << "seconds"<<endl;
+
+    cout<<"MOVIE FROM SHELL-SORT:"<<endl;
+    auto shellStart = chrono::system_clock::now();
+    shellTop = shellList.getMax();
+    auto shellStop = chrono::system_clock::now();
+    chrono::duration<double> shellTime = (shellStop - shellStart);
+    cout<<shellTop.at(0)<<" "<<shellTop.at(1)<< " "<< shellTop.at(2)<<endl;
+    cout<<"TIME TAKEN FOR SHELL-SORT: "<< shellTime.count() << "seconds"<<endl;
+
+    cout<<"ADD FIRST MOVIE TO LIST?(y/n)"<<endl;
+
+    string firstInput;
+    cin>>firstInput;
+
+    if(firstInput == "y")
+    {
+        personalList.push_back(heapTop.at(0));
+        cout<< "ADDED TO LIST!"<<endl;
     }
-    while(!end){
-    cout<< counter<< endl;
-    cout<< "Enter name to search title";
-    string nameOfMovie;
-    cin>> nameOfMovie;
-    movieList.search(nameOfMovie);*/
+
+    bool continueBool = true;
+    while(continueBool)
+    {
+        cout<<"------NEXT MOVIE------"<<endl;
+        cout<<endl;
+        cout<<"MOVIE:"<<endl;
+        heapTop = movieList.getMax();
+        cout<<heapTop.at(0)<<" "<<heapTop.at(1)<< " "<< heapTop.at(2)<<endl;
+
+        
+        cout<<"ADD MOVIE TO LIST?(y/n)"<<endl;
+
+        string firstInput;
+        cin>>firstInput;
+
+        if(firstInput == "y")
+        {
+            personalList.push_back(heapTop.at(0));
+            cout<< "ADDED TO LIST!"<<endl;
+        }
+
+        cout<<"TYPE 1 TO CONTINUE OR 2 TO EXIT"<<endl;
+
+        string nextInput;
+        cin>> nextInput;
+
+        if(nextInput == "2")
+        {
+            continueBool = false;
+        }
+
+
+    }
+
+    cout<<endl;
+    cout<<"YOUR LIST:"<<endl;
+    for(int i = 0; i < personalList.size(); i++)
+    {
+        cout<<personalList.at(i)<<endl;
+    }
+
+    
+    
+    
+    
 
 
 
